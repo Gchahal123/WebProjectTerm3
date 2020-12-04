@@ -1,0 +1,113 @@
+#yuhu, #yippie{ 
+	margin: 0;
+	padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Yrsa', serif;
+    background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+form#event{
+	border:2px solid #000;
+	border-radius: 7px;
+	box-shadow: 0 15px 25px rgb(0,0,0); 
+	padding: 20px 30px 20px 30px;
+	max-width: 100%;
+	margin: 0px auto;
+}
+
+form#event fieldset{
+	background-color: #000;
+	border: none;
+	background: rgb(0,0,0, 0.3);
+	box-shadow: 0 15px 25px rgb(0,0,0);
+	padding: 18px 18px;
+	color: white;
+}
+
+li{
+	list-style: none;
+	padding:10px 10px;
+	width: 170px;
+	margin-left: -10px;
+}
+
+.login { 
+    margin: auto;
+    width:400px;
+    height:400px;
+    padding: 50px 50px;
+}
+
+.login h1 { 
+	color: #fff; 
+	text-shadow: 0 0 10px rgba(0,0,0,0.3); 
+	letter-spacing:1px; 
+	text-align:center; 
+}
+
+input { 
+    width: 100%; 
+    margin-bottom: 10px; 
+    background: rgba(0,0,0,0.3);
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 4px;  
+}
+
+input:focus { 
+	box-shadow: rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); 
+}
+
+form#event button {
+	border:none;
+	display: block;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	box-shadow: 0 15px 25px rgb(0,0,0);
+	background-color: #3b3c36;
+	color: black;
+	padding: 16px 32px;
+	text-align: center;
+	font-size: 16px;
+	margin:15px auto;
+	opacity: 0.6;
+	transition: 0.3s;
+}
+
+form#event button:hover {
+	opacity: 1;
+}
+
+a:link{
+	text-decoration: blink;
+	}
+
+	a:visited{
+		color: #f3f4f5 ;
+	}
+
+	a:active{
+		font-size: 24px;
+		font-family: italic;
+	}
+
+	a:hover, a:focus{
+		
+		color: powderblue;
+	}
+
+p{
+	color: #117079;
+	text-shadow: 1px 2px 2px #000;
+	font-size: 20px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+
+}
