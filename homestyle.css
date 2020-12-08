@@ -122,16 +122,11 @@ body#homepage{
 #ctg{
 	left: 20px;
 	display: inline;
-	float:left;
 	margin-right:20px;
 	color: #10652a;
 	font-family: arial;
 	padding: 0 0 0 28px;
 	text-shadow: 0 1px 1px #FFFFFF;
-}
-
-#dsc{
-	text-align: left;
 }
 
 #upld img{
@@ -140,23 +135,20 @@ body#homepage{
 }
 
 #upld a{
-	margin-left: 200px;
 	border: 0 none;
     color: #271500;
     font-family: arial;
     font-size: 14px;
     text-decoration: none;
-	text-indent: 0;
 	background: none;
 	width: auto;
 	height: auto;
-	float: right;
 
 }
 
 
 #upld button {
-	width: 100%;
+	width: 10%;
     padding: 10px 20px;
     border:0px;
     outline: none;
@@ -219,4 +211,45 @@ body#homepage{
 #content ul li a img:hover{
 	filter:alpha(opacity=80);
 	opacity:0.8;
+}
+
+caption{
+	background-color:#f2f3f4;
+	color: black;
+}
+
+table{
+	background-color: #FFF;
+	border: 2px black;
+	margin: 3px;
+	text-align: center;
+	width: 80%;
+	color: black;
+	border-collapse: collapse;
+}
+
+th{
+	background-color: #755A57;
+	color: #FFF;
+	padding: 5px 15px;
+	font-size: 20px;
+	text-align: center;
+	text-shadow: 7px 5px 3px #000;
+}
+
+td{
+	border-top: 2px #7C5547;
+	padding: 5px 15px;
+}
+
+tr:nth-child(odd){
+	background-color: #daa520;
+}
+
+tr{
+	background-color: #f2f3f4;
+	color: black;
+}
+th,td,table{
+	border:2px #000;
 }

@@ -2,7 +2,7 @@
 	require('connect.php');
 	$error=[];
 
-	$query = "SELECT * FROM category Limit 5";
+	$query = "SELECT * FROM category ORDER BY categoryname";
 
  	$prepare = $db->prepare($query);
 
@@ -13,21 +13,45 @@
  	if (empty($category)) {
  		$error = "<p>No category found</p>"; 	
  	}
+
+ 	if(isset($_POST['submit']))
+    {
+
+        $find = $_POST['name'];
+
+
+	    if(empty($find)){
+	    	echo "no data found";
+	    }
+       
+       else
+       {
+	        $query = "SELECT * FROM category WHERE categoryid ='$find' OR categoryname LIKE '$find%'";
+	        $prep = $db->prepare($query);
+	        $prep->execute();
+	        $post = $prep->fetchAll();
+	        $error = "";
+
+		}
+    }
+
+
+
 ?> 
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Homepage</title>
-	<link rel="stylesheet" type="text/css" href="homestyle.css?4">
+	<link rel="stylesheet" type="text/css" href="homestyle.css?7">
 	<link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
 </head>
 <body id="homepage">
 	<img class="logo" src="photos/pk.png" alt="Chattbir Zoo">
-		<div class="search-bar">
-			<input type="text" name="search" autocomplete="off"/>
-			<button type="submit">Search</button>	
-		</div>
+	<form method = "post" >
+    <input type="text" name ="name">
+    <button name="submit">Search</button>
+    </form>
 
         <div class="first-nav">
             <ul>
@@ -44,6 +68,22 @@
         	<div class="Chhatbir">Chhatbir Zoo</div>
         	<div class="Zoo">The Zoo is currently open to the public. In response to COVID-19, we’ve made some essential changes to ensure a safe and enjoyable experience for all.</div>
         </div>
+
+        <table style="width: 100%">
+        	<caption>Search results:</caption>
+        	<tr>
+        		<th> category ID </th>
+        		<th> category Name </th>
+        	</tr>
+        	<?php if(isset($post)): ?>
+        	<?php foreach ($post as $posts): ?>
+        	<tr>
+        		<td><a href="output.php?id=<?=$posts['categoryid']; ?>"><?= $posts['categoryid']; ?></a></td>
+        		<td><?= $posts['categoryname']; ?></td>
+        	</tr>
+        	<?php endforeach; ?>
+        <?php endif; ?>
+        </table>
 
 
 	<section>
@@ -69,16 +109,15 @@
 			<p> <a href="category.php"> <button> Add new category </button> </a> </p>
 		</div>
 
-		<p> <a href="captcha.php"><button> Captcha </button> </a> </p>
-
 		<?php foreach ($category as $categories): ?>
 
 			<h3 id="ctg"> <?= $categories['categoryname']; ?> </h3>
 			<p id="upld"> 
 
-				<a href=""> <img src="<?= $categories['image']; ?>"> </a> 
+				<a href="animals.php"> <img src="<?= $categories['image']; ?>"> </a> 
 				<a href="Comment.php?categoryid=<?= $categories['categoryid']; ?>"><button>Add your comments </button></a>
 				<a href="edit.php?categoryid=<?= $categories['categoryid']; ?>"><button> Edit</button> </a>
+				<a href="delete.php?categoryid=<?= $categories['categoryid']; ?>"><button onclick="return confirm('Are you sure?')"> Delete</button> </a>
 
 			</p>
 

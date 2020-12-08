@@ -88,3 +88,44 @@ ul li{
 		letter-spacing: 3px;
 		font-style: italic;
 	}
+
+	caption{
+	background-color:#f2f3f4;
+	color: black;
+}
+
+table{
+	background-color: #FFF;
+	border: 5px black;
+	margin: 3px;
+	text-align: left;
+	width: 80%;
+	color: black;
+	border-collapse: collapse;
+}
+
+th{
+	background-color: #755A57;
+	color: #FFF;
+	padding: 5px 15px;
+	font-size: 20px;
+	text-align: center;
+	text-shadow: 7px 5px 3px #000;
+}
+
+td{
+	border-top: 2px #7C5547 solid;
+	padding: 5px 15px;
+}
+
+tr:nth-child(odd){
+	background-color: #daa520;
+}
+
+tr{
+	background-color: #f2f3f4;
+	color: black;
+}
+th,td,table{
+	border:5px solid #000;
+}

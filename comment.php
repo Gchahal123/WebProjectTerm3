@@ -64,7 +64,12 @@
 	<title>Comment</title>
 </head>
 <body>
-    
+
+    <?php foreach ($post as $posts): ?>
+        <p> <?= $posts['categoryname']; ?> </p>
+        <P> <?= $posts['image']; ?> </P>
+    <?php endforeach; ?>
+
     <form method="post">
     <h4> Please write down your perception. </h4>
 	<textarea name="comment" id="comment" rows="5" cols="45" placeholder="what do you think?"></textarea><br>

@@ -4,3 +4,8 @@ input[type=text] {
   margin: 8px 0;
   box-sizing: border-box;
 }
+
+form img{
+	height: 200px;
+	width: 200px;
+}

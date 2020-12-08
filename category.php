@@ -1,11 +1,15 @@
 <?php
 	require ('connect.php');
-	require ('authenticate.php');
+	session_start();
+
+	if(!isset($_SESSION['admin'])){
+
+        header('location: admin.php');
+    }
 
 	$message = ' ';
     if(isset($_POST['upload']))
     {
-        
         
         $categoryname = $_POST['categoryname'];
 

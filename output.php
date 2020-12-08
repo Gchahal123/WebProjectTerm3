@@ -1,14 +1,17 @@
 <?php
 	require ('connect.php');
 	
+	$id = filter_input(INPUT_GET, 'categoryid', FILTER_SANITIZE_NUMBER_INT);
+    
 	// Build the parameterized SQL query and bind the sanitized values to the parameters
-	$query = "SELECT * FROM animals WHERE id = {$_GET['id']}";
+	$query = "SELECT * FROM category WHERE categoryid = :categoryid";
  	$statement = $db->prepare($query);
-
+ 	$statement->bindValue(':categoryid', $id, PDO::PARAM_INT);
  	//Execute the INSERT.
  	$statement->execute();
 
  	$animal = $statement->fetchAll();
+
 
 ?>
 <!DOCTYPE html>
@@ -20,14 +23,10 @@
 
 </head>
 <body>
-
-	<h2><?= $animal[0]['animalname']; ?></h2>
-
-	<span><a href="edit.php?id=<?php echo $animal[0]['id']; ?>">-Edit</a></span>
-
-	<p><?= $animal[0]['description']?></p><br>
-
-	<p><?= $animal[0]['image']?></p>
+	<?php foreach ($animal as $animals): ?>
+		<h2><?= $animals['categoryname']; ?></h2>
+		<p><?= $animals['image']?></p>
+	<?php endforeach; ?>
 	
 </body>
 </html>

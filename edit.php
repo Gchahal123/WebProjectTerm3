@@ -1,58 +1,83 @@
-<?php 
-
-	require ('connect.php');
-	 session_start();
+<?php
     
+    require 'connect.php';
 
-    if(!isset($_SESSION['user'])){
+    $query = "SELECT * FROM category WHERE categoryid = {$_GET['categoryid']}";
+    $state = $db->prepare($query);
+    $state->execute();
+    $post = $state->fetchAll();
+    $id = $_GET['categoryid'];
+    $message = " ";
 
-        header('location: login.php');
+    if (isset($_POST['submit']))
+    {
+        $categoryname = $_POST['categoryname'];
+        $old_image = $_POST['old_image'];
+        $new_image = $_FILES['image']['name'];
+        $image_stored_location = "images/".$new_image;
+        $image_tem_location = $_FILES['image']['tmp_name'];
+
+        if($_FILES['image']['name'] != '')
+        {
+            $image_stored_location = "images/".$new_image;
+        }
+        else
+        {
+            $image_stored_location = $old_image;
+            
+            $query = "UPDATE category SET categoryname = :categoryname WHERE categoryid = :categoryid";
+
+            $statement = $db->prepare($query);
+		    $statement->bindValue(':categoryname', $categoryname);  
+		    $statement->bindValue(':categoryid', $id, PDO::PARAM_INT);
+		    $statement->execute();
+		    header('Location:homepage.php?categoryid='.$id);
+        }
+
+        if(!(file_exists($image_stored_location)))
+        {
+            $query = "UPDATE category SET categoryname = :categoryname, images = :images WHERE categoryid = :categoryid";  
+
+        $statement = $db->prepare($query);
+        $statement->bindValue(':categoryname', $categoryname);
+        $statement->bindValue(':images', $image_stored_location);   
+	    $statement->bindValue(':categoryid', $id, PDO::PARAM_INT);
+	    
+        $statement->execute();
+        move_uploaded_file($image_tem_location,$image_stored_location);
+        }
+
+        else
+        {
+            
+           $query = "UPDATE category SET categoryname = :categoryname, images = :images WHERE categoryid = :categoryid"; 
+	        $statement = $db->prepare($query);
+	        $statement->bindValue(':categoryname', $categoryname);
+	        $statement->bindValue(':images', $image_stored_location);
+		    $statement->bindValue(':categoryid', $id, PDO::PARAM_INT);
+
+        
+           if($statement->execute())
+           {
+             	if($_FILES['image']['name'] != '')
+             	{
+                	move_uploaded_file($image_tem_location,$image_stored_location);
+
+             	}
+
+             	$message = " COngrats! Your data is updated.";
+           }
+
+           else
+           {
+             $message = "The file could not updated.";
+           }
+
+        }
     }
 
-	$query = "SELECT * FROM category WHERE categoryid = {$_GET['categoryid']}";
-
- 	$statement = $db->prepare($query);
-
- 	$statement->execute();
-
- 	$animal = $statement->fetchAll();
-
- 	$id = $_GET['categoryid'];
-
- 	if (isset($_POST['submit'])) {
- 		
- 		$categoryname = $_POST['categoryname'];
- 		// $image= $_FILES['image']['name'];
-   //      $image_type =$_FILES['image']['type'];
-   //      $image_size = $_FILES['image']['size'];
-   //      $image_tem_location = $_FILES['image']['tmp_name'];
-   //      $image_stored_location = "images/";
-
-   //      // unlink($image_stored_location.);
-            
-   //      move_uploaded_file($image_tem_location,$image_stored_location.$image);
-
-    	// Build the parameterized SQL query and bind the sanitized values to the parameters
- 		$query = "UPDATE category SET categoryname = :categoryname WHERE categoryid = :id";  
-	    $statement = $db->prepare($query);
-
-	    //Bind values to the parameters.
-	    $statement->bindValue(':categoryname', $categoryname);  
-	    // $statement->bindValue(':image', $image_stored_location.$image);
-	    $statement->bindValue(':categoryid', $id, PDO::PARAM_INT);
-
-	  	
-	  	//This statement is now executed.
-	    $statement->execute();
-	    header('Location:homepage.php?categoryid='.$id);
- 	}
-
- 	if (isset($_POST['delete'])) {
-
- 		header('Location:delete.php?categoryid='.$id);
- 	}
- 	
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,13 +88,17 @@
 <body>
 	<form method="post">
 
-		<input type="text" name="categoryname" id="categoryname" value="<?= $animal[0]['categoryname']?>"><br>
+		<input type="text" name="categoryname" id="categoryname" value="<?= $post[0]['categoryname']?>"><br>
 
-		<!-- <input type="file" name="image" id="image" value="<?= $animal[0]['image'] ?>"> -->
+		<img src="<?= $post[0]['image'];?>" width="200">
+        
+		<input type="hidden" name="old_image" id="image" value="<?= $post[0]['image'] ?>">
+
+        <input type="file" name="image">
 
 		<button type="submit" name="submit" value="submit">Update</button>
 
-		<button type="submit" name="delete" value="Delete" onclick="return confirm('Are you sure?')">Delete</button> 
+		 
 
 	</form>
 
