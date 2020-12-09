@@ -13,7 +13,6 @@
     if(isset($_POST['upload']))
     {
         
-        
         $animalname = $_POST['animalname'];
         $description = $_POST['description'];
        

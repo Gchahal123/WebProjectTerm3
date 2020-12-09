@@ -19,7 +19,6 @@
 
         $find = $_POST['name'];
 
-
 	    if(empty($find)){
 	    	echo "no data found";
 	    }
@@ -34,7 +33,6 @@
 
 		}
     }
-
 
 
 ?> 

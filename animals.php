@@ -10,7 +10,6 @@
     }
 
     $message = ' ';
-    
 
     if (isset($_POST['upload'])) 
     {
