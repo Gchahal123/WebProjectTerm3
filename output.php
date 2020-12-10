@@ -1,26 +1,53 @@
 <?php
 
-	require('connect.php');
-	$query = "SELECT * FROM category WHERE categoryid = {$_GET['id']}";
- 	$state = $db->prepare($query);
- 	$state->execute();
-    $post = $state->fetchAll();
-     
+    session_start();
+    require('connect.php');
+
+    if(!isset($_SESSION['user']))
+    {
+        header('location: login.php');
+    }
+
+    $message = ' ';
+    
+    $statement = "SELECT * FROM animal WHERE categoryid = {$_GET['categoryid']}";
+    $state = $db->prepare($statement);
+    $state->execute();
+    $animal = $state->fetchAll();
+
+    $query = "SELECT * FROM comments WHERE categoryid = {$_GET['categoryid']}";
+    $prep = $db->prepare($query);
+    $prep->execute();
+    $p = $prep->fetchAll();
+    $error = "";
+    if (empty($p)) 
+    {
+        $error = "<p>No Data found </p>";   
+    }
+    
 ?>
+   
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
-    <meta charset="utf-8">
-	<title>PDO output</title>
-
+    <title>Comment</title>
+    <link rel="stylesheet" type="text/css" href="all.css">
 </head>
-<body>
-	<?php foreach ($post as $animals): ?>
-		<h2><?= $animals['categoryname']; ?></h2>
-		<p><img src="<?= $animals['image']?>"></p>
-	<?php endforeach; ?>
-	
+<body id="view">
+        <h2> Animals in this category </h2>
+        <?php foreach ($animal as $animals): ?>
+            <h3> <?= $animals['animal']; ?> </h3>
+            <p> <?= $animals['description']; ?> </p>
+            <img src="<?= $animals['image']; ?>" width=200 height=200>
+            <P> Posted By: <?= $animals['user']; ?> </P>
+            <p> Posted on: <?= $animals['timestamp']; ?> </p>
+        <?php endforeach; ?>
+
+        <h2> Your Comments: </h2>
+        <?php foreach ($p as $comments): ?>
+            <p> <?= $comments['comment']; ?> </p>
+            <P> Posted By: <?= $comments['user']; ?> </P>
+        <?php endforeach; ?>
 </body>
 </html>
