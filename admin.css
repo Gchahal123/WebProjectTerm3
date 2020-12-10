@@ -46,3 +46,7 @@ a:link{
 	text-decoration: none;
 }
 
+li .pagination{
+	display: flex;
+	justify-content: space-between;
+}

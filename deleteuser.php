@@ -8,5 +8,6 @@
     $statement->execute();
     
     header('Location:adminauthority.php');
+    
 ?>
 

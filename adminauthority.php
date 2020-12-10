@@ -1,10 +1,33 @@
 <?php
 
     require 'connect.php';
-    $sql = "SELECT * FROM users";   
+
+    $limit = 4;
+    if(isset($_GET['page']))
+    {
+        $page = $_GET['page'];
+    }
+    else
+    {
+        $page = 1;
+    }
+
+    $offset = ($page -1) * $limit;
+
+    $sql = "SELECT * FROM users ORDER BY username LIMIT {$offset},{$limit}";   
     $result = $db->prepare($sql);
     $result->execute();
     $value=$result->fetchAll();
+
+    $select = "SELECT * FROM users";
+    $statement=$db->prepare($select);
+    $statement->execute();
+  
+    if($statement->rowCount() >0)
+    {
+      $total_records = $statement->rowCount();
+      $total_page = ceil($total_records/$limit);
+    }
 
 ?>
 
@@ -46,7 +69,29 @@
         <?php endforeach ?>
     </table>
     </form>
+
+
+    <?php
+        echo '<ul>';
+        if($page >1)
+        {
+          echo  '<span><a href ="adminauthority.php?page='.($page- 1).'">Previous</a>-</span>';
+        }
+
+        for($i = 1; $i <=$total_page; $i++)
+        {
+          echo '<span><a href ="adminauthority.php?page='.$i.'">'.$i.'</a>-</span>';
+        }
+
+        if($total_page >$page)
+        {
+          echo '<span><a href ="adminauthority.php?page='.($page+ 1).'">Next</a></span>';
+        }
+
+        echo '</ul>';
+      ?>
 </body>
 </html>
+
 
 

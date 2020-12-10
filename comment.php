@@ -1,6 +1,7 @@
 <?php
-	require('connect.php');
+
 	session_start();
+    require('connect.php');
 
 	if(!isset($_SESSION['user']))
     {
@@ -16,9 +17,9 @@
 
     if (isset($_POST['upload'])) 
     {
-        $comment = $_POST['comment'];
+        $comment = filter_input(INPUT_POST, "comment", FILTER_SANITIZE_STRING);
+        $captcha = filter_input(INPUT_POST, "captcha", FILTER_SANITIZE_STRING);
         $user = $_SESSION['user'];
-        $captcha = $_POST['captcha'];
         if($captcha != $_SESSION["vercode"])
         {
             echo "verification failed.";
@@ -71,19 +72,19 @@
     <?php endforeach; ?>
 
     <form method="post">
-    <h4> Please write down your perception. </h4>
-	<textarea name="comment" id="comment" rows="5" cols="45" placeholder="what do you think?"></textarea><br>
-    <label><img src="captchas.php"></label>
-    <input type="text" name="captcha">
-    <button name="upload">Uplaod</button>
+        <h4> Please write down your perception. </h4>
+    	<textarea name="comment" id="comment" rows="5" cols="45" placeholder="what do you think?"></textarea><br>
+        <label><img src="captchas.php"></label>
+        <input type="text" name="captcha">
+        <button name="upload">Uplaod</button>
 
-    <?php echo $message ?>
-    <h2> Your Comments: </h2>
-    <?php foreach ($p as $comments): ?>
-        <p> <?= $comments['comment']; ?> </p>
-        <P> Posted By: <?= $comments['user']; ?> </P>
-    <?php endforeach; ?>
-</form>
+        <?php echo $message ?>
+        <h2> Your Comments: </h2>
+        <?php foreach ($p as $comments): ?>
+            <p> <?= $comments['comment']; ?> </p>
+            <P> Posted By: <?= $comments['user']; ?> </P>
+        <?php endforeach; ?>
+    </form>
 
 </body>
 </html>
