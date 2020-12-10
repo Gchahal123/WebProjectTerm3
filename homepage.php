@@ -15,12 +15,13 @@
 
  	if(isset($_POST['submit']))
     {
-        $find = $_POST['name'];
+    	$find = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
 
 	    if(empty($find))
 	    {
 	    	echo "no data found";
 	    }
+
        	else
        	{
 	        $query = "SELECT * FROM category WHERE categoryid ='$find' OR categoryname LIKE '$find%'";
@@ -52,7 +53,7 @@
 <html>
 <head>
 	<title>Homepage</title>
-	<link rel="stylesheet" type="text/css" href="homestyle.css?9">
+	<link rel="stylesheet" type="text/css" href="homestyle.css?10">
 	<link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
 </head>
 <body id="homepage">
@@ -108,13 +109,15 @@
 
 			<div id="meet">
 				<h2> Meet our Animals </h2>
-				<p> <a href="category.php"> <button> Add new category </button> </a> </p>
+				<p> <a href="category.php"> <button class="myButton"> Add new category </button> </a> </p>
 			</div>
 			<?php foreach ($category as $categories): ?>
-				<p> <a href="animals.php?categoryid=<?= $categories['categoryid']; ?>"> <button> Add new animal </button> </a> </p>
-				<h3 id="ctg"> <?= $categories['categoryname']; ?> </h3>
+				<div id="animaladd">
+					<h3 id="ctg"> <?= $categories['categoryname']; ?> </h3>
+					<p> <a href="animals.php?categoryid=<?= $categories['categoryid']; ?>"> <button class="myButton"> Add new animal </button> </a> </p>
+				</div>
 				<p id="upld"> 
-					<a href="view.php?categoryid=<?= $categories['categoryid']; ?>"> <img src="<?= $categories['image']; ?>" width=200 height=200> </a> 
+					<a href="view.php?categoryid=<?= $categories['categoryid']; ?>"> <img src="<?= $categories['image']; ?>" width=200 height=200> </a><br> 
 					<a href="Comment.php?categoryid=<?= $categories['categoryid']; ?>"><button>Add your comments </button></a>
 					<a href="edit.php?categoryid=<?= $categories['categoryid']; ?>"><button> Edit</button> </a>
 					<a href="delete.php?categoryid=<?= $categories['categoryid']; ?>"><button onclick="return confirm('Are you sure?')"> Delete</button> </a>

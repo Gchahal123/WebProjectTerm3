@@ -115,3 +115,59 @@ caption{
    	border-bottom: 2px solid black;
    	text-transform: uppercase;
 }
+
+#meet{
+	display: flex;
+	justify-content: space-between;
+}
+
+#animaladd{
+	display: flex;
+}
+
+#animaladd h3{
+	text-align:left;
+	font-family: "Trebuchet MS", sans-serif;
+	font-variant:small-caps;
+	color:#000;
+	letter-spacing: 1px;
+	margin-right: 50px;
+}
+
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #f7c5c0;
+	background: rgb(238,174,202);
+	background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+	border-radius:6px;
+	border:1px solid #d4f1f9;
+	display:inline-block;
+	cursor:pointer;
+	color:#000;
+	font-family:Arial;
+	font-size:10px;
+	font-weight:bold;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #d4f1f9;
+}
+.myButton:hover {
+	background: rgb(238,174,202);
+	background: radial-gradient(circle, rgba(148,187,233,1) 0%,  rgba(238,174,202,1) 100%);
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+#upld img{
+  border: 1px solid #000;
+  border-radius: 4px;
+  padding: 5px;
+  height: 300px;
+  width: 400px;
+  margin: auto;
+}
+
+#upld img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
