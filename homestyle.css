@@ -193,3 +193,21 @@ caption{
 	display: flex;
 	justify-content: space-around;
 }
+
+.styled-table a:link {
+  color: red;
+  text-decoration: none;
+}
+
+.styled-table a:visited {
+  color: hotpink;
+  text-decoration: none;
+}
+
+.styled-table a:hover {
+  color: white;
+}
+
+.styled-table a:active {
+  color: blue;
+}

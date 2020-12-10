@@ -1,21 +1,13 @@
 <?php
 
-    session_start();
-    require('connect.php');
+	require('connect.php');
 
-    if(!isset($_SESSION['user']))
-    {
-        header('location: login.php');
-    }
-
-    $message = ' ';
-    
-    $statement = "SELECT * FROM animal WHERE categoryid = {$_GET['categoryid']}";
+	$statement = "SELECT * FROM animal WHERE categoryid = {$_GET['id']}";
     $state = $db->prepare($statement);
     $state->execute();
     $animal = $state->fetchAll();
 
-    $query = "SELECT * FROM comments WHERE categoryid = {$_GET['categoryid']}";
+	$query = "SELECT * FROM comments WHERE categoryid = {$_GET['id']}";
     $prep = $db->prepare($query);
     $prep->execute();
     $p = $prep->fetchAll();
@@ -24,9 +16,8 @@
     {
         $error = "<p>No Data found </p>";   
     }
-    
+     
 ?>
-   
 
 <!DOCTYPE html>
 <html>

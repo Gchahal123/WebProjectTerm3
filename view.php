@@ -42,6 +42,8 @@
             <img src="<?= $animals['image']; ?>" width=200 height=200>
             <P> Posted By: <?= $animals['user']; ?> </P>
             <p> Posted on: <?= $animals['timestamp']; ?> </p>
+            <span><a href="edit2.php?id=<?= $animals['id']; ?>">Edit</a></span>
+            <span><a href="delete2.php?id=<?= $animals['id']; ?>">Delete</a></span>
         <?php endforeach; ?>
 
         <h2> Your Comments: </h2>

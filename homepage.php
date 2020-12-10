@@ -53,7 +53,7 @@
 <html>
 <head>
 	<title>Homepage</title>
-	<link rel="stylesheet" type="text/css" href="homestyle.css?11">
+	<link rel="stylesheet" type="text/css" href="homestyle.css?12">
 	<link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
 </head>
 <body id="homepage">
@@ -72,7 +72,6 @@
 				<li><a href="register.php">Register</a></li>
 				<li><a href="admin.php">Admin Login</a></li>
 				<li><a href="logout.php">Logout</a></li>
-				<li><a href="contact.html">Contact Us</a></li>
 		    </ul>
 		</div>
 
@@ -88,7 +87,7 @@
 	        	<?php if(isset($post)): ?>
 	        	<?php foreach ($post as $posts): ?>
 	        	<tr class="active-row">
-	        		<td><a href="output.php?id=<?=$posts['categoryid']; ?>"><?= $posts['categoryid']; ?></a></td>
+	        		<td><a id="output" href="output.php?id=<?=$posts['categoryid']; ?>"><?= $posts['categoryid']; ?></a></td>
 	        		<td><?= $posts['categoryname']; ?></td>
 	        	</tr>
 	        	<?php endforeach; ?>
