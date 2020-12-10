@@ -120,7 +120,7 @@
 					<a href="view.php?categoryid=<?= $categories['categoryid']; ?>"> <img src="<?= $categories['image']; ?>" width=200 height=200> </a><br>
 
 					<div id="comment">
-						<a href="Comment.php?categoryid=<?= $categories['categoryid']; ?>"><button>Add your comments </button></a>
+						<a href="Comment.php?categoryid=<?= $categories['categoryid']; ?>?p=<?= $categories['categoryname']; ?>"><button>Add your comments </button></a>
 
 						<span><a href="edit.php?categoryid=<?= $categories['categoryid']; ?>"><button id="edit"> Edit</button> </a></span>
 
