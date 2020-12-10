@@ -171,3 +171,25 @@ caption{
 #upld img:hover {
   box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+
+#comment button{
+	box-shadow:inset 0px 0px 14px -3px #f2fadc;
+	background: rgb(131,58,180);
+	background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(224,150,150,1) 52%, rgba(252,176,69,1) 100%);
+	border-radius:6px;
+	border:1px solid #b2b8ad;
+	display:inline-block;
+	cursor:pointer;
+	color:#000;
+	font-family:Arial;
+	font-size:10px;
+	font-weight:bold;
+	padding:6px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ced9bf;
+}
+
+#comment{
+	display: flex;
+	justify-content: space-around;
+}

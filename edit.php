@@ -3,9 +3,9 @@
     session_start();
     require ('connect.php');
 
-    if(!isset($_SESSION['user']))
+    if(!isset($_SESSION['admin']))
     {
-        header('location: login.php');
+        header('location: admin.php');
     }
 
     $query = "SELECT * FROM category WHERE categoryid = {$_GET['categoryid']}";
@@ -83,16 +83,17 @@
 <head>
     <meta charset="utf-8">
 	<title>Edit php</title>
-	<!-- <link rel="stylesheet" type="text/css" href="edit.css"> -->
+	<link rel="stylesheet" type="text/css" href="all.css">
 </head>
 <body>
 	<form method="post" enctype = "multipart/form-data">
+        <h2> Edit this post </h2>
 		<input type="text" name="categoryname" id="categoryname" value="<?= $post[0]['categoryname']?>"><br>
-		<img src="<?= $post[0]['image'];?>" width="200">
+		<img src="<?= $post[0]['image'];?>" width="200"><br>
 		
         <label>Upload new image: </label><br>
-        <input type="text" name="old_image" id="image" value="<?= $post[0]['image'] ?>">
-        <input type="file" name="image">
+        <input type="hidden" name="old_image" id="image" value="<?= $post[0]['image'] ?>">
+        <input type="file" name="image"><br>
 		<button type="submit" name="update" value="submit">Update</button>
 	</form>
 </body>

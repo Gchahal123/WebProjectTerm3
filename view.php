@@ -32,11 +32,12 @@
 <html>
 <head>
     <title>Comment</title>
+    <link rel="stylesheet" type="text/css" href="all.css">
 </head>
-<body>
+<body id="view">
         <h2> Animals in this category </h2>
         <?php foreach ($animal as $animals): ?>
-            <p> <?= $animals['animal']; ?> </p>
+            <h3> <?= $animals['animal']; ?> </h3>
             <p> <?= $animals['description']; ?> </p>
             <img src="<?= $animals['image']; ?>" width=200 height=200>
             <P> Posted By: <?= $animals['user']; ?> </P>

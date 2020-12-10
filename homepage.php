@@ -53,7 +53,7 @@
 <html>
 <head>
 	<title>Homepage</title>
-	<link rel="stylesheet" type="text/css" href="homestyle.css?10">
+	<link rel="stylesheet" type="text/css" href="homestyle.css?11">
 	<link href='http://fonts.googleapis.com/css?family=Cinzel' rel='stylesheet' type='text/css'>
 </head>
 <body id="homepage">
@@ -117,10 +117,15 @@
 					<p> <a href="animals.php?categoryid=<?= $categories['categoryid']; ?>"> <button class="myButton"> Add new animal </button> </a> </p>
 				</div>
 				<p id="upld"> 
-					<a href="view.php?categoryid=<?= $categories['categoryid']; ?>"> <img src="<?= $categories['image']; ?>" width=200 height=200> </a><br> 
-					<a href="Comment.php?categoryid=<?= $categories['categoryid']; ?>"><button>Add your comments </button></a>
-					<a href="edit.php?categoryid=<?= $categories['categoryid']; ?>"><button> Edit</button> </a>
-					<a href="delete.php?categoryid=<?= $categories['categoryid']; ?>"><button onclick="return confirm('Are you sure?')"> Delete</button> </a>
+					<a href="view.php?categoryid=<?= $categories['categoryid']; ?>"> <img src="<?= $categories['image']; ?>" width=200 height=200> </a><br>
+
+					<div id="comment">
+						<a href="Comment.php?categoryid=<?= $categories['categoryid']; ?>"><button>Add your comments </button></a>
+
+						<span><a href="edit.php?categoryid=<?= $categories['categoryid']; ?>"><button id="edit"> Edit</button> </a></span>
+
+						<span><a href="delete.php?categoryid=<?= $categories['categoryid']; ?>"><button onclick="return confirm('Are you sure?')"> Delete</button> </a></span>
+					</div>
 				</p>
 			<?php endforeach; ?>
 		</div>

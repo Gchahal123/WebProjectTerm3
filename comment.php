@@ -63,6 +63,7 @@
 <html>
 <head>
 	<title>Comment</title>
+    <link rel="stylesheet" type="text/css" href="all.css">
 </head>
 <body>
 
@@ -72,10 +73,10 @@
     <?php endforeach; ?>
 
     <form method="post">
-        <h4> Please write down your perception. </h4>
+        <h2> Please write down your perception. </h2>
     	<textarea name="comment" id="comment" rows="5" cols="45" placeholder="what do you think?"></textarea><br>
         <label><img src="captchas.php"></label>
-        <input type="text" name="captcha">
+        <input type="text" name="captcha"><br>
         <button name="upload">Uplaod</button>
 
         <?php echo $message ?>

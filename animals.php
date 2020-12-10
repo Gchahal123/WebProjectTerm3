@@ -57,22 +57,13 @@
                 if( $statement->execute())
                 {
                     $message = "Animal is added!";
+                    header("location: homepage.php");
                     
                 }
                 else
                 {
                     $message = "Animal is not added";
                 }
-            }
-
-            $query = "SELECT * FROM animal WHERE categoryid = {$_GET['categoryid']}";
-            $prep = $db->prepare($query);
-            $prep->execute();
-            $p = $prep->fetchAll();
-            $error = "";
-            if (empty($p)) 
-            {
-                $error = "<p>No Data found </p>";   
             }
         }
     }
@@ -85,26 +76,20 @@
 <html>
 <head>
     <title>Comment</title>
+    <link rel="stylesheet" type="text/css" href="all.css">
 </head>
 <body>
 
     <form method="post" enctype = "multipart/form-data" >
-        <h4> Please add a new animal in this category</h4>
-        <label>Animal Name:</label>
+        <h2> Please add a new animal in this category</h2>
+        <label>Animal Name:</label><br>
         <input type="text" name="animal">
         <textarea name="description" id="comment" rows="5" cols="45" placeholder="Details of this animal!!"></textarea><br>
         <label>Upload Image:</label><br>
         <input type="file" name="image" ><br>
         <button name="upload">Uplaod</button>
-
-        <?php echo $message ?>
-        <h2> Animals in this category: </h2>
-        <?php foreach ($p as $comments): ?>
-            <p> <?= $comments['animal']; ?> </p>
-            <p> <?= $comments['description']; ?> </p>
-            <P> Posted By: <?= $comments['user']; ?> </P>
-        <?php endforeach; ?>
     </form>
+    <?php echo $message; ?>
 
 </body>
 </html>

@@ -99,6 +99,7 @@
 <head>
     <meta charset="UTF-8">
 	<title>Category of animals</title>
+	<link rel="stylesheet" type="text/css" href="all.css">
 </head>
 <body>
 	<form method="post" enctype = "multipart/form-data">
