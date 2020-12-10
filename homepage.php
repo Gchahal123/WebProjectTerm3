@@ -47,8 +47,8 @@
 <body id="homepage">
 	<img class="logo" src="photos/pk.png" alt="Chattbir Zoo">
 	<form method = "post" >
-    <input type="text" name ="name">
-    <button name="submit">Search</button>
+    <input type="text" name ="name" class="search">
+	    <button name="submit" id="search">Search</button>
     </form>
 
         <div class="first-nav">
@@ -67,20 +67,24 @@
         	<div class="Zoo">The Zoo is currently open to the public. In response to COVID-19, we’ve made some essential changes to ensure a safe and enjoyable experience for all.</div>
         </div>
 
-        <table style="width: 100%">
+        <table class="styled-table" style="width: 50%">
         	<caption>Search results:</caption>
-        	<tr>
-        		<th> category ID </th>
-        		<th> category Name </th>
-        	</tr>
-        	<?php if(isset($post)): ?>
-        	<?php foreach ($post as $posts): ?>
-        	<tr>
-        		<td><a href="output.php?id=<?=$posts['categoryid']; ?>"><?= $posts['categoryid']; ?></a></td>
-        		<td><?= $posts['categoryname']; ?></td>
-        	</tr>
-        	<?php endforeach; ?>
-        <?php endif; ?>
+        	<thead>
+	        	<tr>
+	        		<th> Category ID </th>
+	        		<th> Category Name </th>
+	        	</tr>
+	        </thead>
+	        <tbody>
+	        	<?php if(isset($post)): ?>
+	        	<?php foreach ($post as $posts): ?>
+	        	<tr class="active-row">
+	        		<td><a href="output.php?id=<?=$posts['categoryid']; ?>"><?= $posts['categoryid']; ?></a></td>
+	        		<td><?= $posts['categoryname']; ?></td>
+	        	</tr>
+	        	<?php endforeach; ?>
+	        	<?php endif; ?>
+	        </tbody>
         </table>
 
 

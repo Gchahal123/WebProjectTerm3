@@ -212,43 +212,52 @@ body#homepage{
 	opacity:0.8;
 }
 
+form input{
+	margin-left: 30px;
+}
+
+#search{
+	margin-right: 55px;
+}
+
 caption{
-	background-color:#f2f3f4;
-	color: black;
+	text-align: left;
+	color: #666;
+	font-size: 1rem;
 }
 
-table{
-	background-color: #FFF;
-	border: 2px black;
-	margin: 3px;
-	text-align: center;
-	width: 80%;
-	color: black;
-	border-collapse: collapse;
+.styled-table {
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-th{
-	background-color: #755A57;
-	color: #FFF;
-	padding: 5px 15px;
-	font-size: 20px;
-	text-align: center;
-	text-shadow: 7px 5px 3px #000;
+.styled-table thead tr {
+    background-color: #ff9a9e;
+    color: #ffffff;
+    text-align: left;
 }
 
-td{
-	border-top: 2px #7C5547;
-	padding: 5px 15px;
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
 }
 
-tr:nth-child(odd){
-	background-color: #daa520;
+.styled-table tbody tr {
+    border-bottom: 1px solid #ff9a9e;
 }
 
-tr{
-	background-color: #f2f3f4;
-	color: black;
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
 }
-th,td,table{
-	border:2px #000;
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #ff9a9e;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #ff9a9e;
 }
