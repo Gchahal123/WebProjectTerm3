@@ -51,3 +51,21 @@ img{
 	border: 1px solid #000;
   	border-radius: 4px;
 }
+
+.animaledit a:link {
+  color: red;
+  text-decoration: none;
+}
+
+.animaledit a:visited {
+  color: hotpink;
+  text-decoration: none;
+}
+
+.animaledit a:hover {
+  color: white;
+}
+
+.animaledit a:active {
+  color: blue;
+}

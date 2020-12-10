@@ -14,6 +14,7 @@
     $statement->execute();
     $animal = $statement->fetchAll();
     $id = $_GET['id'];
+
     if (isset($_POST['update'])) {
         
         $animalname = $_POST['animal'];
@@ -26,7 +27,7 @@
         $statement->bindValue(':id', $id, PDO::PARAM_INT);
 
         $statement->execute();
-        header('Location:view.php?id='.$id);
+        header('Location:homepage.php');
     }
     
 ?>
